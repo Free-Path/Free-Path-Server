@@ -1,0 +1,16 @@
+pluginManagement {
+    plugins {
+        id 'org.springframework.boot' version "${springBootVersion}"
+        id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+        id 'io.spring.javaformat' version "${springJavaFormatVersion}"
+    }
+}
+
+rootProject.name = 'free-path'
+
+include ':api'
+include ':application-core'
+include ':domain'
+include 'infrastructure:db-core'
+include 'library:swagger'
+include 'clients:data-client'
