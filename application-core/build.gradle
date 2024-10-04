@@ -1,3 +1,7 @@
 dependencies {
+    implementation ("org.springframework:spring-tx")
+    implementation project(":infrastructure:db-core")
+
+    compileOnly ("org.springframework:spring-context")
     compileOnly project(":domain")
 }

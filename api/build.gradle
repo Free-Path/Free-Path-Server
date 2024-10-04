@@ -2,8 +2,10 @@ bootJar.enabled = true
 jar.enabled = false
 
 dependencies {
+    compileOnly ("org.springframework:spring-context")
+
     implementation project(":domain")
-    implementation project(":infrastructure:db-core")
+    implementation project(":application-core")
     implementation project(":clients:data-client")
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
