@@ -11,7 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "p_user")
+@Table(name = "f_user")
 public class UserEntity extends BaseEntity {
 
     private String name;

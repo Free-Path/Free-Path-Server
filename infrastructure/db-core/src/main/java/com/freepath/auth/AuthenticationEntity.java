@@ -11,7 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "p_authentication")
+@Table(name = "f_authentication")
 public class AuthenticationEntity extends BaseEntity {
 
     private Long userId;
