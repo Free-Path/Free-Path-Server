@@ -1,7 +1,6 @@
-package com.freepath.user;
+package com.freepath.user.domain;
 
-public record User(
-    Long id,
+public record NewUser(
     String name,
     Gender gender,
     Integer age,

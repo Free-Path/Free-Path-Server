@@ -1,4 +1,4 @@
-package com.freepath.user;
+package com.freepath.user.domain;
 
 public enum Gender {
     MALE("남성"),

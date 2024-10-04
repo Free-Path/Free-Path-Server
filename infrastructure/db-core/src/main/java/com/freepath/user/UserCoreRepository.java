@@ -2,8 +2,12 @@ package com.freepath.user;
 
 import org.springframework.stereotype.Repository;
 
+import com.freepath.user.domain.NewUser;
+import com.freepath.user.domain.User;
+import com.freepath.user.repository.UserRepository;
+
 @Repository
-public class UserCoreRepository {
+public class UserCoreRepository implements UserRepository {
 
     private final UserJpaRepository userJpaRepository;
 

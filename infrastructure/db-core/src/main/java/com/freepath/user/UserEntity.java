@@ -1,6 +1,9 @@
 package com.freepath.user;
 
 import com.freepath.BaseEntity;
+import com.freepath.user.domain.Gender;
+import com.freepath.user.domain.NewUser;
+import com.freepath.user.domain.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,7 +11,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "p_user")
 public class UserEntity extends BaseEntity {
 
     private String name;
