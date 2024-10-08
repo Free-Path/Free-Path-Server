@@ -16,10 +16,12 @@ public class UserEntity extends BaseEntity {
 
     private String name;
 
+    private String nickname;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    private Integer age;
+    private String ageRange;
 
     private String imageUrl;
 
@@ -28,8 +30,9 @@ public class UserEntity extends BaseEntity {
 
     public UserEntity(NewUser newUser) {
         this.name = newUser.name();
+        this.nickname = newUser.nickname();
         this.gender = newUser.gender();
-        this.age = newUser.age();
+        this.ageRange = newUser.ageRange();
         this.imageUrl = newUser.imageUrl();
     }
 
@@ -37,8 +40,9 @@ public class UserEntity extends BaseEntity {
         return new User(
             this.getId(),
             this.name,
+            this.nickname,
             this.gender,
-            this.age,
+            this.ageRange,
             this.imageUrl
         );
     }
@@ -47,13 +51,13 @@ public class UserEntity extends BaseEntity {
         return name;
     }
 
+    public String getNickname() {return nickname; }
+
     public Gender getGender() {
         return gender;
     }
 
-    public Integer getAge() {
-        return age;
-    }
+    public String getAgeRange() { return ageRange; }
 
     public String getImageUrl() {
         return imageUrl;

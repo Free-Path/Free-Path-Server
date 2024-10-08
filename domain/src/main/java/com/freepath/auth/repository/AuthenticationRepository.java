@@ -5,7 +5,9 @@ import com.freepath.auth.domain.NewAuthentication;
 
 public interface AuthenticationRepository {
 
-    Authentication create(NewAuthentication newAuthentication);
+    Authentication create(Long userId, NewAuthentication newAuthentication);
 
     Boolean verifySocialId(String socialId);
+
+    Authentication findBySocialId(String socialId);
 }

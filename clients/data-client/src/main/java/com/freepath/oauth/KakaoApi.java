@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.freepath.oauth.response.KaKaoUserResponse;
 
-@FeignClient(value = "kakao-auth-api", url = "https://kapi.kakao.com")
+@FeignClient(value = "kakao-api", url = "https://kapi.kakao.com")
 public interface KakaoApi {
     @GetMapping(
         value = "/v2/user/me",

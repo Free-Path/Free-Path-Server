@@ -10,9 +10,6 @@ public enum ErrorCode {
     /** Authentication */
     FA00,
     FA01,
-    FA04,
-    FA03,
-    FA05,
 
     /** User */
     FU00,

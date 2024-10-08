@@ -3,8 +3,9 @@ package com.freepath.user.domain;
 public record User(
     Long id,
     String name,
+    String nickname,
     Gender gender,
-    Integer age,
+    String ageRange,
     String imageUrl
 ) {
 }

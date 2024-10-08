@@ -3,26 +3,30 @@ package com.freepath.auth.component;
 import org.springframework.stereotype.Service;
 
 import com.freepath.auth.domain.Authentication;
+import com.freepath.auth.domain.CredentialSocial;
 import com.freepath.auth.domain.NewAuthentication;
+import com.freepath.token.domain.Token;
 
 @Service
 public class AuthenticationService {
 
-    private final AuthenticationAppender authenticationAppender;
+    private final AuthenticationProcessor authenticationProcessor;
     private final AuthenticationValidator authenticationValidator;
 
     public AuthenticationService(
-        AuthenticationAppender authenticationAppender,
+        AuthenticationProcessor authenticationProcessor,
         AuthenticationValidator authenticationValidator
     ) {
-        this.authenticationAppender = authenticationAppender;
+        this.authenticationProcessor = authenticationProcessor;
         this.authenticationValidator = authenticationValidator;
     }
 
-    public Authentication signUp(
-        NewAuthentication newAuthentication
-    ) {
+    public Authentication signUp(Long userId, NewAuthentication newAuthentication) {
         authenticationValidator.verify(newAuthentication);
-        return authenticationAppender.append(newAuthentication);
+        return authenticationProcessor.append(userId, newAuthentication);
+    }
+
+    public Token login(CredentialSocial credentialSocial) {
+        return authenticationProcessor.login(credentialSocial);
     }
 }

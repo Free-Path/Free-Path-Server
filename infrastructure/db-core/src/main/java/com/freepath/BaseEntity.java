@@ -51,7 +51,6 @@ public abstract class BaseEntity {
         return deletedAt;
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -59,7 +58,6 @@ public abstract class BaseEntity {
         return id != null && Objects.equals(id, that.id);
     }
 
-    @Override
     public int hashCode() {
         return id != null ? Objects.hash(id) : 0;
     }
