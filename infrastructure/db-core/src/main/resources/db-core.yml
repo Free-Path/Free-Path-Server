@@ -35,6 +35,27 @@ datasource:
 spring:
   config:
     activate:
+      on-profile: dev
+
+datasource:
+  db:
+    core:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://${datasource.db-core.url}
+      username: ${datasource.db-core.username}
+      password: ${datasource.db-core.password}
+      pool-name: core-db-pool
+      maximum-pool-size: 10
+      connection-timeout: 1000
+      keepalive-time: 30000
+      validation-timeout: 1000
+      max-lifetime: 600000
+      data-source-properties:
+        rewriteBatchedStatements: true
+---
+spring:
+  config:
+    activate:
       on-profile: prod
 
 datasource:

@@ -1,0 +1,10 @@
+spring.cloud.openfeign:
+  client:
+    config:
+      kakao-api:
+        connectTimeOut: 2000
+        readTimeout: 5000
+        loggerLevel: full
+  httpclient:
+    max-connections: 1000
+    max-connections-per-route: 500

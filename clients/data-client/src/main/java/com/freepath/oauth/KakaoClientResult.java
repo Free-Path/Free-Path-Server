@@ -5,6 +5,7 @@ public record KakaoClientResult(
     String name,
     String nickname,
     String ageRange,
-    String gender
+    String gender,
+    String imageUrl
 ) {
 }

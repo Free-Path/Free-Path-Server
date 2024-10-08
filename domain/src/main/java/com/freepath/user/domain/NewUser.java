@@ -2,8 +2,9 @@ package com.freepath.user.domain;
 
 public record NewUser(
     String name,
+    String nickname,
     Gender gender,
-    Integer age,
+    String ageRange,
     String imageUrl
 ) {
 }
