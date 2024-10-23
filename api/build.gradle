@@ -10,4 +10,8 @@ dependencies {
     implementation project(":library:logging")
     implementation project(":library:swagger")
     implementation ("org.springframework.boot:spring-boot-starter-web")
+
+    compileOnly 'org.projectlombok:lombok'
+
+    annotationProcessor 'org.projectlombok:lombok'
 }
