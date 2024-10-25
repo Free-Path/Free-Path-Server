@@ -10,4 +10,3 @@ public interface ScheduleJpaRepository extends JpaRepository<ScheduleEntity, Lon
             + "AND (YEAR(s.endAt) > :year OR (YEAR(s.endAt) = :year AND MONTH(s.endAt) >= :month))")
     List<ScheduleEntity> getScheduleInMonth(@Param("year") int year, @Param("month") int month);
 }
-s
