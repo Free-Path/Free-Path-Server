@@ -47,6 +47,9 @@ public class ScheduleCoreRepository implements ScheduleRepository {
 
     @Override
     public void saveAllScheduledDisability(List<NewScheduledDisability> newScheduledDisability) {
-        return;
+        List<ScheduledDisabilityEntity> scheduledDisabilityEntities = newScheduledDisability.stream()
+                .map(ScheduledDisabilityEntity::new)
+                .collect(Collectors.toList());
+        disabilityJpaRepository.saveAll(scheduledDisabilityEntities);
     }
 }
