@@ -1,6 +1,7 @@
 package com.freepath.schedule;
 
 import com.freepath.BaseEntity;
+import com.freepath.schedule.domain.NewSchedule;
 import com.freepath.schedule.domain.Schedule;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -23,11 +24,11 @@ public class ScheduleEntity extends BaseEntity {
     protected ScheduleEntity() {
     }
 
-    public ScheduleEntity(Long userId, LocalDateTime startAt, LocalDateTime endAt, int totalPeople) {
-        this.userId = userId;
-        this.startAt = startAt;
-        this.endAt = endAt;
-        this.totalPeople = totalPeople;
+    public ScheduleEntity(NewSchedule schedule) {
+        this.userId = schedule.userId();
+        this.startAt = schedule.startAt();
+        this.endAt = schedule.endAt();
+        this.totalPeople = schedule.totalPeople();
     }
 
     public Schedule toSchedule() {
