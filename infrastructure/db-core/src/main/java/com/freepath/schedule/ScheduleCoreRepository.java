@@ -39,7 +39,10 @@ public class ScheduleCoreRepository implements ScheduleRepository {
 
     @Override
     public void saveAllScheduledPlace(List<NewScheduledPlace> newScheduledPlaces) {
-        return;
+        List<ScheduledPlaceEntity> scheduledPlaceEntities = newScheduledPlaces.stream()
+                .map(ScheduledPlaceEntity::new)
+                .collect(Collectors.toList());
+        placeJpaRepository.saveAll(scheduledPlaceEntities);
     }
 
     @Override
