@@ -1,4 +1,4 @@
-package com.freepath.controller.schedule.response;
+package com.freepath.controller.schedule.dto.response;
 
 import com.freepath.schedule.domain.Schedule;
 

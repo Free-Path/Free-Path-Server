@@ -1,6 +1,7 @@
 package com.freepath.controller.schedule;
 
-import com.freepath.controller.schedule.response.SchedulePeriodResponse;
+import com.freepath.controller.schedule.dto.request.SaveScheduleRequest;
+import com.freepath.controller.schedule.dto.response.SchedulePeriodResponse;
 import com.freepath.schedule.component.ScheduleService;
 import com.freepath.schedule.domain.Schedule;
 import com.freepath.support.response.ApiResponse;
@@ -9,6 +10,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +35,11 @@ public class ScheduleController {
                 .collect(Collectors.toList());
 
         return ApiResponse.success(schedulePeriodResponses);
+    }
+
+    @Operation(summary = "여행 일정 확정")
+    @PostMapping("/")
+    public ApiResponse<Long> saveSchedule(@RequestBody SaveScheduleRequest scheduleRequest) {
+        return ApiResponse.success(scheduleService.saveSchedule(scheduleRequest.toCoreRequest()));
     }
 }
