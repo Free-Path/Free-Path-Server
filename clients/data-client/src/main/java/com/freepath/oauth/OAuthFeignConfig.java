@@ -6,4 +6,5 @@ import org.springframework.context.annotation.Configuration;
 @EnableFeignClients
 @Configuration
 public class OAuthFeignConfig {
+
 }

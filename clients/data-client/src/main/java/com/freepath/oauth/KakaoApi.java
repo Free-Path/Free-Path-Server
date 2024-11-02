@@ -9,11 +9,9 @@ import com.freepath.oauth.response.KaKaoUserResponse;
 
 @FeignClient(value = "kakao-api", url = "https://kapi.kakao.com")
 public interface KakaoApi {
-    @GetMapping(
-        value = "/v2/user/me",
-        consumes = "application/x-www-form-urlencoded;charset=utf-8",
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    KaKaoUserResponse getKaKaoUserInfo(
-        @RequestHeader(name = "Authorization") String authorization
-    );
+
+    @GetMapping(value = "/v2/user/me", consumes = "application/x-www-form-urlencoded;charset=utf-8",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    KaKaoUserResponse getKaKaoUserInfo(@RequestHeader(name = "Authorization") String authorization);
+
 }

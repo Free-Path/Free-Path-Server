@@ -17,4 +17,5 @@ public class HealthController {
     public ApiResponse<String> check() {
         return ApiResponse.success("pong");
     }
+
 }

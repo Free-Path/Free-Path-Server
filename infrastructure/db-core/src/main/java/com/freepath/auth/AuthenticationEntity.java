@@ -31,11 +31,7 @@ public class AuthenticationEntity extends BaseEntity {
     }
 
     public Authentication toAuthentication() {
-        return new Authentication(
-            this.getId(),
-            this.userId,
-            this.socialId,
-            this.socialType
-        );
+        return new Authentication(this.getId(), this.userId, this.socialId, this.socialType);
     }
+
 }

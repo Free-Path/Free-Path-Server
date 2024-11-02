@@ -1,7 +1,9 @@
 package com.freepath.error;
 
 public class ErrorException extends RuntimeException {
+
     private final ErrorType errorType;
+
     private final Object data;
 
     public ErrorException(ErrorType errorType) {
@@ -23,5 +25,5 @@ public class ErrorException extends RuntimeException {
     public Object getData() {
         return data;
     }
-}
 
+}

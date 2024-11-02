@@ -31,8 +31,8 @@ public class ScheduleController {
     public ApiResponse<List<SchedulePeriodResponse>> getBookedDates(@PathVariable("month") Integer month) {
         List<Schedule> schedules = scheduleService.getBookedDates(month);
         List<SchedulePeriodResponse> schedulePeriodResponses = schedules.stream()
-                .map(SchedulePeriodResponse::of)
-                .collect(Collectors.toList());
+            .map(SchedulePeriodResponse::of)
+            .collect(Collectors.toList());
 
         return ApiResponse.success(schedulePeriodResponses);
     }
@@ -42,4 +42,5 @@ public class ScheduleController {
     public ApiResponse<Long> saveSchedule(@RequestBody SaveScheduleRequest scheduleRequest) {
         return ApiResponse.success(scheduleService.saveSchedule(scheduleRequest.toCoreRequest()));
     }
+
 }

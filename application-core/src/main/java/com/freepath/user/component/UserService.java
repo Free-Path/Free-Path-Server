@@ -9,6 +9,7 @@ import com.freepath.user.domain.User;
 public class UserService {
 
     private final UserAppender userAppender;
+
     private final UserValidator userValidator;
 
     public UserService(UserAppender userAppender, UserValidator userValidator) {
@@ -20,4 +21,5 @@ public class UserService {
         userValidator.verify(newUser);
         return userAppender.append(newUser);
     }
+
 }

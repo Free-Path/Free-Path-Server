@@ -13,6 +13,7 @@ import com.freepath.token.repository.TokenRepository;
 public class AuthenticationProcessor {
 
     private final AuthenticationRepository authenticationRepository;
+
     private final TokenRepository tokenRepository;
 
     public AuthenticationProcessor(AuthenticationRepository authenticationRepository, TokenRepository tokenRepository) {
@@ -28,4 +29,5 @@ public class AuthenticationProcessor {
         Authentication authentication = authenticationRepository.findBySocialId(credentialSocial.socialId());
         return tokenRepository.create(authentication);
     }
+
 }

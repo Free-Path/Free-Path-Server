@@ -17,4 +17,5 @@ public interface ScheduleRepository {
     void saveAllScheduledPlace(List<NewScheduledPlace> newScheduledPlace);
 
     void saveAllScheduledDisability(List<NewScheduledDisability> newScheduledDisability);
+
 }

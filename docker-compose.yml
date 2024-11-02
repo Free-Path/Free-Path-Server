@@ -1,0 +1,35 @@
+services:
+  was-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - SPRING_PROFILE_ACTIVE=prod
+    ports:
+      - "8080:8080"
+    networks:
+      - fp-backend
+    depends_on:
+      - database-mysql
+  database-mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker-compose.local.d/database-mysql/conf.d/:/etc/mysql/conf.d/:ro
+      - ./docker-compose.local.d/database-mysql/data/:/var/lib/mysql/
+      - ./docker-compose.local.d/database-mysql/initdb.d/:/docker-entrypoint-initdb.d:ro
+    environment:
+      - MYSQL_DATABASE=fp
+      - MYSQL_ROOT_PASSWORD=fp
+      - MYSQL_USER=fp
+      - MYSQL_PASSWORD=fp
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+    networks:
+      - fp-backend
+
+networks:
+  fp-backend:

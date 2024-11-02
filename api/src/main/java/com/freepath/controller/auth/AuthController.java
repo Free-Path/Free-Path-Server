@@ -31,12 +31,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class AuthController {
 
     private final AuthenticationService authenticationService;
+
     private final OAuthService oAuthService;
+
     private final UserService userService;
 
-    public AuthController(
-        AuthenticationService authenticationService, OAuthService oAuthService, UserService userService
-    ) {
+    public AuthController(AuthenticationService authenticationService, OAuthService oAuthService,
+            UserService userService) {
         this.authenticationService = authenticationService;
         this.oAuthService = oAuthService;
         this.userService = userService;
@@ -46,37 +47,18 @@ public class AuthController {
     @PostMapping("/signup/kakao")
     public ApiResponse<SignUpWithKakaoResponse> signUpWithKakao(@RequestBody SignUpWithKakaoRequest request) {
         KakaoClientResult result = oAuthService.getKaKaoUserInfo(request.kakaoToken());
-        User user = userService.create(
-            new NewUser(
-                result.name(),
-                result.nickname(),
-                Gender.toGender(result.gender()),
-                result.ageRange(),
-                result.imageUrl()
-            )
-        );
-        authenticationService.signUp(
-            user.id(),
-            new NewAuthentication(
-                result.id(),
-                SocialType.KAKAO
-            )
-        );
+        User user = userService.create(new NewUser(result.name(), result.nickname(), Gender.toGender(result.gender()),
+                result.ageRange(), result.imageUrl()));
+        authenticationService.signUp(user.id(), new NewAuthentication(result.id(), SocialType.KAKAO));
         return ApiResponse.success(new SignUpWithKakaoResponse("(카카오) 회원가입에 성공했습니다."));
     }
 
     @Operation(summary = "로그인 (카카오)")
     @PostMapping("/login/kakao")
-    public ApiResponse<TokenResponse> loginWithKaKao(
-        @RequestBody LoginWithKakaoRequest request
-    ) {
+    public ApiResponse<TokenResponse> loginWithKaKao(@RequestBody LoginWithKakaoRequest request) {
         KakaoClientResult result = oAuthService.getKaKaoUserInfo(request.kakaoToken());
-        Token token = authenticationService.login(
-            new CredentialSocial(
-                result.id(),
-                SocialType.KAKAO
-            )
-        );
+        Token token = authenticationService.login(new CredentialSocial(result.id(), SocialType.KAKAO));
         return ApiResponse.success(TokenResponse.of(token));
     }
+
 }

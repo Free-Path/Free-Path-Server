@@ -10,13 +10,17 @@ import lombok.Getter;
 @Getter
 @Table(name = "scheduled_disability")
 public class ScheduledDisabilityEntity extends BaseEntity {
+
     private Long scheduleId;
+
     private String disability;
 
-    protected ScheduledDisabilityEntity() { }
+    protected ScheduledDisabilityEntity() {
+    }
 
     public ScheduledDisabilityEntity(NewScheduledDisability scheduledDisability) {
         this.scheduleId = scheduledDisability.scheduleId();
         this.disability = scheduledDisability.disability();
     }
+
 }

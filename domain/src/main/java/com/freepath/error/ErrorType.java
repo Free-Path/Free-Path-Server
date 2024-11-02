@@ -11,12 +11,14 @@ public enum ErrorType {
     INVALID_ACCESS_TOKEN(ErrorKind.CLIENT_ERROR, ErrorCode.F401, "잘못된 액세스 토큰입니다.", ErrorLevel.ERROR),
 
     DUPLICATED_USER(ErrorKind.CLIENT_ERROR, ErrorCode.FA00, "이미 존재하는 유저입니다.", ErrorLevel.WARN),
-    INVALID_KAKAO_TOKEN(ErrorKind.CLIENT_ERROR, ErrorCode.FA01, "유효하지 않은 카카오 토큰입니다.", ErrorLevel.ERROR)
-    ;
+    INVALID_KAKAO_TOKEN(ErrorKind.CLIENT_ERROR, ErrorCode.FA01, "유효하지 않은 카카오 토큰입니다.", ErrorLevel.ERROR);
 
     private final ErrorKind kind;
+
     private final ErrorCode code;
+
     private final String message;
+
     private final ErrorLevel level;
 
     ErrorType(ErrorKind kind, ErrorCode code, String message, ErrorLevel level) {
@@ -41,4 +43,5 @@ public enum ErrorType {
     public ErrorLevel getLevel() {
         return level;
     }
+
 }

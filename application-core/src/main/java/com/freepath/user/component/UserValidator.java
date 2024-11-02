@@ -9,4 +9,5 @@ public class UserValidator {
 
     public void verify(NewUser newUser) {
     }
+
 }
