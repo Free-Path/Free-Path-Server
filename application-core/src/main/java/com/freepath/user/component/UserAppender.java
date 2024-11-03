@@ -18,4 +18,5 @@ public class UserAppender {
     public User append(NewUser newUser) {
         return userRepository.create(newUser);
     }
+
 }

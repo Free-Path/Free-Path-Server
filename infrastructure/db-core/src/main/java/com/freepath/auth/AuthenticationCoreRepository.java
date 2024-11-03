@@ -30,4 +30,5 @@ public class AuthenticationCoreRepository implements AuthenticationRepository {
         return authenticationJpaRepository.findBySocialId(socialId)
             .orElseThrow(() -> new ErrorException(ErrorType.NOT_FOUND_DATA, socialId));
     }
+
 }

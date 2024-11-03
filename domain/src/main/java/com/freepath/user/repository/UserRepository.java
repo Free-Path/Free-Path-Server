@@ -6,4 +6,5 @@ import com.freepath.user.domain.User;
 public interface UserRepository {
 
     User create(NewUser newUser);
+
 }

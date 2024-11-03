@@ -10,4 +10,5 @@ public interface AuthenticationRepository {
     Boolean verifySocialId(String socialId);
 
     Authentication findBySocialId(String socialId);
+
 }

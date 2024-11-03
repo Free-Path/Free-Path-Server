@@ -17,6 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ScheduleService {
+
     private final ScheduleRepository scheduleRepository;
 
     public List<Schedule> getBookedDates(int month) {
@@ -25,24 +26,18 @@ public class ScheduleService {
 
     public Long saveSchedule(SaveScheduleCoreRequest saveScheduleCoreRequest) {
         // 여행 일정 저장 로직
-        Long scheduleId = scheduleRepository.saveSchedule(new NewSchedule(
-                1L,
-                saveScheduleCoreRequest.schedules().getFirst().scheduleAt().atStartOfDay(),
-                saveScheduleCoreRequest.schedules().getLast().scheduleAt().atStartOfDay(),
-                saveScheduleCoreRequest.totalPeople()
-        ));
+        Long scheduleId = scheduleRepository.saveSchedule(
+                new NewSchedule(1L, saveScheduleCoreRequest.schedules().getFirst().scheduleAt().atStartOfDay(),
+                        saveScheduleCoreRequest.schedules().getLast().scheduleAt().atStartOfDay(),
+                        saveScheduleCoreRequest.totalPeople()));
 
         // 여행 일정에 포함된 여행지 저장 로직
         List<NewScheduledPlace> scheduledPlaces = new ArrayList<>();
         for (DailyScheduleCoreRequest dailyScheduleCoreRequest : saveScheduleCoreRequest.schedules()) {
             int sequenceIdx = 0;
             for (Long placeId : dailyScheduleCoreRequest.destinationIds()) {
-                scheduledPlaces.add(new NewScheduledPlace(
-                        placeId,
-                        scheduleId,
-                        dailyScheduleCoreRequest.scheduleAt().atStartOfDay(),
-                        sequenceIdx++
-                ));
+                scheduledPlaces.add(new NewScheduledPlace(placeId, scheduleId,
+                        dailyScheduleCoreRequest.scheduleAt().atStartOfDay(), sequenceIdx++));
             }
         }
         scheduleRepository.saveAllScheduledPlace(scheduledPlaces);
@@ -53,13 +48,11 @@ public class ScheduleService {
             if (!Disability.existType(disability)) {
                 throw new RuntimeException("일치하는 타입이 없습니다.");
             }
-            scheduledDisabilities.add(new NewScheduledDisability(
-                    scheduleId,
-                    disability
-            ));
+            scheduledDisabilities.add(new NewScheduledDisability(scheduleId, disability));
         }
         scheduleRepository.saveAllScheduledDisability(scheduledDisabilities);
 
         return scheduleId;
     }
+
 }

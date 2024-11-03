@@ -22,16 +22,16 @@ public class AuthConfig implements WebMvcConfigurer {
     }
 
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new AuthInterceptor(jwtProvider))
-//            .addPathPatterns("/v1/**");
+        // registry.addInterceptor(new AuthInterceptor(jwtProvider))
+        // .addPathPatterns("/v1/**");
     }
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/*")
-            .addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/*").addResourceLocations("classpath:/static/");
     }
 
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new JwtResolver(jwtProvider));
     }
+
 }

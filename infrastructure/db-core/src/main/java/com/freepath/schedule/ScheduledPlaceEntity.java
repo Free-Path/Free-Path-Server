@@ -11,12 +11,17 @@ import lombok.Getter;
 @Getter
 @Table(name = "scheduled_place")
 public class ScheduledPlaceEntity extends BaseEntity {
+
     private Long placeId;
+
     private Long scheduleId;
+
     private LocalDateTime scheduledAt;
+
     private int sequencePlace;
 
-    protected ScheduledPlaceEntity() { }
+    protected ScheduledPlaceEntity() {
+    }
 
     public ScheduledPlaceEntity(NewScheduledPlace scheduledPlace) {
         this.placeId = scheduledPlace.placeId();
@@ -24,4 +29,5 @@ public class ScheduledPlaceEntity extends BaseEntity {
         this.scheduledAt = scheduledPlace.scheduledAt();
         this.sequencePlace = scheduledPlace.sequencePlace();
     }
+
 }

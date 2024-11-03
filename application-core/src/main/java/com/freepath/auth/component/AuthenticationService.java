@@ -11,12 +11,11 @@ import com.freepath.token.domain.Token;
 public class AuthenticationService {
 
     private final AuthenticationProcessor authenticationProcessor;
+
     private final AuthenticationValidator authenticationValidator;
 
-    public AuthenticationService(
-        AuthenticationProcessor authenticationProcessor,
-        AuthenticationValidator authenticationValidator
-    ) {
+    public AuthenticationService(AuthenticationProcessor authenticationProcessor,
+            AuthenticationValidator authenticationValidator) {
         this.authenticationProcessor = authenticationProcessor;
         this.authenticationValidator = authenticationValidator;
     }
@@ -29,4 +28,5 @@ public class AuthenticationService {
     public Token login(CredentialSocial credentialSocial) {
         return authenticationProcessor.login(credentialSocial);
     }
+
 }

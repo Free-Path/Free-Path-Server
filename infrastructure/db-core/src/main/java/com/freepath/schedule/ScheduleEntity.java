@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Table(name = "schedule")
 public class ScheduleEntity extends BaseEntity {
+
     private Long userId;
 
     private LocalDateTime startAt;
@@ -32,12 +33,7 @@ public class ScheduleEntity extends BaseEntity {
     }
 
     public Schedule toSchedule() {
-        return new Schedule(
-                this.getId(),
-                this.userId,
-                this.startAt,
-                this.endAt,
-                this.totalPeople
-        );
+        return new Schedule(this.getId(), this.userId, this.startAt, this.endAt, this.totalPeople);
     }
+
 }

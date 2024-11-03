@@ -14,4 +14,5 @@ public class KakaoClient {
     public KakaoClientResult getUserInfo(String token) {
         return kakaoApi.getKaKaoUserInfo("Bearer " + token).toResult();
     }
+
 }

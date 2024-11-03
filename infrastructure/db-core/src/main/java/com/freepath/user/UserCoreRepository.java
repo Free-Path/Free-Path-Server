@@ -19,4 +19,5 @@ public class UserCoreRepository implements UserRepository {
         UserEntity userEntity = new UserEntity(newUser);
         return userJpaRepository.save(userEntity).toUser();
     }
+
 }

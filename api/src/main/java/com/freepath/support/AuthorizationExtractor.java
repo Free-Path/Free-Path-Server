@@ -10,7 +10,9 @@ import jakarta.servlet.http.HttpServletRequest;
 public class AuthorizationExtractor {
 
     private static final String AUTHORIZATION = "Authorization";
+
     private static final String ACCESS_TOKEN_TYPE = AuthorizationExtractor.class.getSimpleName() + ".ACCESS_TOKEN_TYPE";
+
     private static final String BEARER_TYPE = "Bearer";
 
     private AuthorizationExtractor() {
@@ -32,4 +34,5 @@ public class AuthorizationExtractor {
         }
         throw new ErrorException(ErrorType.NO_AUTHORIZATION);
     }
+
 }

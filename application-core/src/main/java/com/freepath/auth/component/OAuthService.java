@@ -21,12 +21,15 @@ public class OAuthService {
     public KakaoClientResult getKaKaoUserInfo(String token) {
         try {
             return kakaoClient.getUserInfo(token);
-        } catch (FeignException e) {
+        }
+        catch (FeignException e) {
             if (e.status() == 401) {
                 throw new ErrorException(ErrorType.INVALID_KAKAO_TOKEN);
-            } else {
+            }
+            else {
                 throw new ErrorException(ErrorType.DEFAULT);
             }
         }
     }
+
 }

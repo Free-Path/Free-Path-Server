@@ -1,8 +1,11 @@
 package com.freepath.error;
 
 public class ErrorMessage {
+
     private final String code;
+
     private final String message;
+
     private final Object data;
 
     private ErrorMessage(String code, String message, Object data) {
@@ -26,5 +29,5 @@ public class ErrorMessage {
     public Object getData() {
         return data;
     }
-}
 
+}

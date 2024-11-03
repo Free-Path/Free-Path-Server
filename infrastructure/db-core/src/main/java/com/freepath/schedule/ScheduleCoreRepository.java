@@ -14,7 +14,9 @@ import java.util.stream.Collectors;
 @Repository
 @RequiredArgsConstructor
 public class ScheduleCoreRepository implements ScheduleRepository {
+
     private final ScheduleJpaRepository scheduleJpaRepository;
+
     private final ScheduledPlaceJpaRepository placeJpaRepository;
 
     private final ScheduledDisabilityJpaRepository disabilityJpaRepository;
@@ -27,9 +29,9 @@ public class ScheduleCoreRepository implements ScheduleRepository {
         }
 
         return scheduleJpaRepository.getScheduleInMonth(2024, month)
-                .stream()
-                .map(ScheduleEntity::toSchedule)
-                .collect(Collectors.toList());
+            .stream()
+            .map(ScheduleEntity::toSchedule)
+            .collect(Collectors.toList());
     }
 
     @Override
@@ -40,16 +42,17 @@ public class ScheduleCoreRepository implements ScheduleRepository {
     @Override
     public void saveAllScheduledPlace(List<NewScheduledPlace> newScheduledPlaces) {
         List<ScheduledPlaceEntity> scheduledPlaceEntities = newScheduledPlaces.stream()
-                .map(ScheduledPlaceEntity::new)
-                .collect(Collectors.toList());
+            .map(ScheduledPlaceEntity::new)
+            .collect(Collectors.toList());
         placeJpaRepository.saveAll(scheduledPlaceEntities);
     }
 
     @Override
     public void saveAllScheduledDisability(List<NewScheduledDisability> newScheduledDisability) {
         List<ScheduledDisabilityEntity> scheduledDisabilityEntities = newScheduledDisability.stream()
-                .map(ScheduledDisabilityEntity::new)
-                .collect(Collectors.toList());
+            .map(ScheduledDisabilityEntity::new)
+            .collect(Collectors.toList());
         disabilityJpaRepository.saveAll(scheduledDisabilityEntities);
     }
+
 }

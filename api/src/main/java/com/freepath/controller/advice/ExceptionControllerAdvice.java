@@ -19,6 +19,7 @@ import com.freepath.support.response.ResultType;
 
 @ControllerAdvice
 public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
+
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @ExceptionHandler(ErrorException.class)
@@ -41,37 +42,28 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Object>> handleException(Exception e) {
         log.error("ErrorException: {}", e.getMessage(), e);
-        return ResponseEntity
-            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(ApiResponse.error(ErrorType.DEFAULT, e.getMessage()));
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiResponse<Object>> handleIllegalArgumentException(IllegalArgumentException e) {
         log.warn("ErrorException: {}", e.getMessage(), e);
-        return ResponseEntity
-            .status(HttpStatus.BAD_REQUEST)
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
             .body(ApiResponse.error(ErrorType.INVALID_REQUEST, e.getMessage()));
     }
 
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<ApiResponse<Object>> handleIllegalStateException(IllegalStateException e) {
         log.warn("ErrorException: {}", e.getMessage(), e);
-        return ResponseEntity
-            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .body(ApiResponse.error(ErrorType.DEFAULT, e.getMessage()));
     }
 
-    protected ResponseEntity<Object> handleHttpMessageNotReadable(
-        HttpMessageNotReadableException e,
-        HttpHeaders headers,
-        HttpStatus status,
-        WebRequest request
-    ) {
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException e,
+            HttpHeaders headers, HttpStatus status, WebRequest request) {
         log.warn("ErrorException: {}", e.getMessage(), e);
-        return ResponseEntity
-            .status(HttpStatus.BAD_REQUEST)
-            .body(error(ErrorType.INVALID_REQUEST));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error(ErrorType.INVALID_REQUEST));
     }
 
     private ApiResponse<?> error(ErrorType error) {
@@ -81,5 +73,5 @@ public class ExceptionControllerAdvice extends ResponseEntityExceptionHandler {
     private ApiResponse<?> error(ErrorType error, Object errorData) {
         return new ApiResponse<>(ResultType.ERROR, error, new ErrorMessage(error, errorData));
     }
-}
 
+}

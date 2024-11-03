@@ -27,13 +27,13 @@ public class JwtProvider implements TokenRepository {
     private static final String SECRET_KEY = "rnlcksgek";
 
     private final AuthenticationProperties authenticationProperties;
+
     private final SecretKey secretKey;
 
     public JwtProvider(AuthenticationProperties authenticationProperties) {
         this.authenticationProperties = authenticationProperties;
-        this.secretKey = new SecretKeySpec(
-            SECRET_KEY.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS256.key().build().getAlgorithm()
-        );
+        this.secretKey = new SecretKeySpec(SECRET_KEY.getBytes(StandardCharsets.UTF_8),
+                Jwts.SIG.HS256.key().build().getAlgorithm());
     }
 
     public Token create(Authentication authentication) {
@@ -43,20 +43,11 @@ public class JwtProvider implements TokenRepository {
 
     private String issueAccessToken(Authentication authentication) {
         Instant issuedAt = Instant.now();
-        return generateToken(
-            authentication.id().toString(),
-            authentication.userId(),
-            issuedAt.plusSeconds(authenticationProperties.accessTokenExpirationSeconds() * 60L),
-            issuedAt
-        );
+        return generateToken(authentication.id().toString(), authentication.userId(),
+                issuedAt.plusSeconds(authenticationProperties.accessTokenExpirationSeconds() * 60L), issuedAt);
     }
 
-    private String generateToken(
-        String jwtId,
-        Long userId,
-        Instant expiresAt,
-        Instant issuedAt
-    ) {
+    private String generateToken(String jwtId, Long userId, Instant expiresAt, Instant issuedAt) {
         return Jwts.builder()
             .id(jwtId)
             .claim("userId", userId)
@@ -71,9 +62,11 @@ public class JwtProvider implements TokenRepository {
         try {
             Claims claims = getClaims(token);
             return claims.getExpiration().before(new Date());
-        } catch (ExpiredJwtException e) {
+        }
+        catch (ExpiredJwtException e) {
             throw new ErrorException(ErrorType.INVALID_TOKEN);
-        } catch (JwtException | IllegalArgumentException e) {
+        }
+        catch (JwtException | IllegalArgumentException e) {
             return true;
         }
     }
@@ -83,10 +76,7 @@ public class JwtProvider implements TokenRepository {
     }
 
     private Claims getClaims(String token) {
-        return Jwts.parser()
-            .verifyWith(secretKey)
-            .build()
-            .parseSignedClaims(token)
-            .getPayload();
+        return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload();
     }
+
 }

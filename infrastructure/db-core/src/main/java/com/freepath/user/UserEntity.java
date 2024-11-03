@@ -37,29 +37,27 @@ public class UserEntity extends BaseEntity {
     }
 
     public User toUser() {
-        return new User(
-            this.getId(),
-            this.name,
-            this.nickname,
-            this.gender,
-            this.ageRange,
-            this.imageUrl
-        );
+        return new User(this.getId(), this.name, this.nickname, this.gender, this.ageRange, this.imageUrl);
     }
 
     public String getName() {
         return name;
     }
 
-    public String getNickname() {return nickname; }
+    public String getNickname() {
+        return nickname;
+    }
 
     public Gender getGender() {
         return gender;
     }
 
-    public String getAgeRange() { return ageRange; }
+    public String getAgeRange() {
+        return ageRange;
+    }
 
     public String getImageUrl() {
         return imageUrl;
     }
+
 }

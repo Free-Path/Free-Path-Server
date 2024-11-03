@@ -1,9 +1,8 @@
 package com.freepath.user.domain;
 
 public enum Gender {
-    MALE("남성"),
-    FEMALE("여성"),
-    UNKNOWN("알 수 없음");
+
+    MALE("남성"), FEMALE("여성"), UNKNOWN("알 수 없음");
 
     private final String description;
 
@@ -22,5 +21,5 @@ public enum Gender {
             default -> UNKNOWN;
         };
     }
-}
 
+}

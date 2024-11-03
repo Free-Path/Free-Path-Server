@@ -3,17 +3,13 @@ package com.freepath.disability;
 import java.util.Arrays;
 
 public enum Disability {
-    // 점자 블록
-    BRAILLE_BLOCK,
-    BRAILLE_PROMOTION,
 
-    AUDIO_GUIDE,
-    HELP_DOG,
-    WHEELCHAIR,
-    ELEVATOR,
+    // 점자 블록
+    BRAILLE_BLOCK, BRAILLE_PROMOTION,
+
+    AUDIO_GUIDE, HELP_DOG, WHEELCHAIR, ELEVATOR,
     // 유모차
-    STROLLER,
-    GUIDE_HUMAN,
+    STROLLER, GUIDE_HUMAN,
     // 수화안내
     SIGN_GUIDE;
 
@@ -25,4 +21,5 @@ public enum Disability {
         }
         return false;
     }
+
 }

@@ -21,4 +21,5 @@ public class AuthenticationValidator {
             throw new ErrorException(ErrorType.DUPLICATED_USER);
         }
     }
+
 }

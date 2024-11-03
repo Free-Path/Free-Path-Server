@@ -26,14 +26,11 @@ public class JwtResolver implements HandlerMethodArgumentResolver {
         return parameter.hasParameterAnnotation(AuthenticationPrincipal.class);
     }
 
-    public Long resolveArgument(
-        MethodParameter parameter,
-        ModelAndViewContainer mavContainer,
-        NativeWebRequest webRequest,
-        WebDataBinderFactory binderFactory
-    ) {
+    public Long resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
+            NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
         String token = AuthorizationExtractor.extract(Objects.requireNonNull(request));
         return jwtProvider.getUserId(token);
     }
+
 }

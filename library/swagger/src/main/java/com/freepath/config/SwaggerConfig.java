@@ -12,11 +12,8 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI openAPI() {
-        Info info = new Info()
-            .title("✈️ Free-Path API")
-            .version("0.1");
-        return new OpenAPI()
-            .components(new Components())
-            .info(info);
+        Info info = new Info().title("✈️ Free-Path API").version("0.1");
+        return new OpenAPI().components(new Components()).info(info);
     }
+
 }
