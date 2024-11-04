@@ -24,4 +24,5 @@ public class PlaceAppender {
     public List<Place> appendAll(List<NewPlace> newPlaces) {
         return placeRepository.createAll(newPlaces);
     }
+
 }

@@ -24,10 +24,7 @@ public class PlaceCoreRepository implements PlaceRepository {
 
     public List<Place> createAll(List<NewPlace> newPlaces) {
         List<PlaceEntity> placeEntities = newPlaces.stream().map(PlaceEntity::new).toList();
-        return placeJpaRepository.saveAll(placeEntities)
-            .stream()
-            .map(PlaceEntity::toPlace)
-            .toList();
+        return placeJpaRepository.saveAll(placeEntities).stream().map(PlaceEntity::toPlace).toList();
     }
 
     public Place readById(Long id) {
@@ -37,4 +34,5 @@ public class PlaceCoreRepository implements PlaceRepository {
     public List<Place> readAll() {
         return placeJpaRepository.findAll().stream().map(PlaceEntity::toPlace).toList();
     }
+
 }
