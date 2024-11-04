@@ -39,4 +39,5 @@ public class PlaceController {
         Place place = placeService.findById(id);
         return ApiResponse.success(PlaceResponse.from(place));
     }
+
 }

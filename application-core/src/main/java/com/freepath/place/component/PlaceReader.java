@@ -23,4 +23,5 @@ public class PlaceReader {
     public List<Place> readAll() {
         return placeRepository.readAll();
     }
+
 }

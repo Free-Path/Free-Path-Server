@@ -48,7 +48,7 @@ public class PlaceEntity extends BaseEntity {
         this.thumbnailUrl1 = newPlace.thumbnail().url1();
         this.thumbnailUrl2 = newPlace.thumbnail().url2();
         this.startAt = newPlace.startAt();
-        this.endAt  = newPlace.endAt();
+        this.endAt = newPlace.endAt();
         this.address = newPlace.address().detail() + newPlace.address().value();
         this.latitude = newPlace.latitude();
         this.longitude = newPlace.longitude();
@@ -56,24 +56,10 @@ public class PlaceEntity extends BaseEntity {
     }
 
     public Place toPlace() {
-        return new Place(
-            this.getId(),
-            this.name,
-            this.description,
-            new Thumbnail(
-                this.thumbnailUrl1,
-                this.thumbnailUrl2
-            ),
-            this.startAt,
-            this.endAt,
-            new Address(
-                this.address,
-                this.detailAddress
-            ),
-            this.latitude,
-            this.longitude,
-            this.likes,
-            this.isBarrierFree
-        );
+        return new Place(this.getId(), this.name, this.description,
+                new Thumbnail(this.thumbnailUrl1, this.thumbnailUrl2), this.startAt, this.endAt,
+                new Address(this.address, this.detailAddress), this.latitude, this.longitude, this.likes,
+                this.isBarrierFree);
     }
+
 }

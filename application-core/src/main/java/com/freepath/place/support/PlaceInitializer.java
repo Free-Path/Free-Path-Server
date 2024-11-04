@@ -50,14 +50,18 @@ public class PlaceInitializer implements ApplicationRunner {
                 Double latitude = Double.valueOf(nextLine[13]);
                 Double longitude = Double.valueOf(nextLine[14]);
                 boolean isBarrierFree = true;
-                NewPlace newPlace = new NewPlace(name, description, thumbnail, startAt, endAt, address, latitude, longitude, isBarrierFree);
+                NewPlace newPlace = new NewPlace(name, description, thumbnail, startAt, endAt, address, latitude,
+                        longitude, isBarrierFree);
                 newPlaces.add(newPlace);
             }
             placeService.createAll(newPlaces);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             logger.error("IOException: {}", e.getMessage());
-        } catch (CsvValidationException e) {
+        }
+        catch (CsvValidationException e) {
             logger.error("CsvValidationException: {}", e.getMessage());
         }
     }
+
 }

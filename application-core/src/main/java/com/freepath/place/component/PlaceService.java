@@ -34,4 +34,5 @@ public class PlaceService {
     public List<Place> findAll() {
         return placeReader.readAll();
     }
+
 }
