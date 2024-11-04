@@ -58,7 +58,7 @@ public class AuthController {
     public ApiResponse<TokenResponse> loginWithKaKao(@RequestBody LoginWithKakaoRequest request) {
         KakaoClientResult result = oAuthService.getKaKaoUserInfo(request.kakaoToken());
         Token token = authenticationService.login(new CredentialSocial(result.id(), SocialType.KAKAO));
-        return ApiResponse.success(TokenResponse.of(token));
+        return ApiResponse.success(TokenResponse.from(token));
     }
 
 }

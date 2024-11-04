@@ -1,10 +1,10 @@
-package com.freepath.oauth;
+package com.freepath;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
 
 @EnableFeignClients
 @Configuration
-public class OAuthFeignConfig {
+public class FeignConfig {
 
 }
